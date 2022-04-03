@@ -24,7 +24,7 @@ def index(request):
                                                     to_date=data_end)
             close = list(df['Close'].values)
 
-            effect = (float(close[-1])-float(action_buy))/100
+            effect = float(close[-1])-float(action_buy)
             try:
                 return render(request, 'main/final.html', {'div':list_info[0], 'price':close[-1], 'strat':strat1(action, country, data_start, data_end), 'effect':round(effect, 2)})
             except:
@@ -39,7 +39,7 @@ def index(request):
                                                         to_date=data_end)
                 close = list(df['Close'].values)
 
-                effect = (float(close[-1]) - float(action_buy)) / 100
+                effect = float(close[-1]) - float(action_buy)
                 return render(request, 'main/final.html', {'div':list_info[0], 'price':close[-1], 'strat':strat2(action, country, data_start, data_end), 'effect':round(effect, 2)})
             except:
                 return render(request, 'main/final.html', {'strat': exc})
@@ -52,7 +52,7 @@ def index(request):
                                                         to_date=data_end)
                 close = list(df['Close'].values)
 
-                effect = (float(close[-1]) - float(action_buy)) / 100
+                effect = float(close[-1]) - float(action_buy)
                 return render(request, 'main/final.html', {'div':list_info[0], 'price':close[-1], 'strat':strat3(action, country, action_buy), 'effect':round(effect, 2)})
             except:
                 return render(request, 'main/final.html', {'strat': exc})
@@ -68,7 +68,7 @@ def index(request):
                                                         to_date=data_end)
                 close = list(df['Close'].values)
 
-                effects = (float(close[-1]) - float(action_buy)) / 100
+                effects = float(close[-1]) - float(action_buy)
                 return render(request, 'main/final.html', {'div': list_info[0], 'price': close[-1],
                                                   'strat': effect, 'effect':round(effects, 2)})
             except:
